@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import 'materialize-css/dist/css/materialize.min.css'
-
+import CartWidget from './CartWidget'
 
 function NavBar() {
   return (
@@ -12,6 +12,7 @@ function NavBar() {
                 <li><a href="https://www.google.com/">Remeras</a></li>
                 <li><a href="https://www.google.com/">Accesorios</a></li>
                 <li><a href="chttps://www.google.com/">Jeans</a></li>
+                <CartWidget/>
             </ul>
             </div>
         </nav>

@@ -1,15 +1,18 @@
-
 import React, { Fragment } from 'react'
-import NavBar from './components/NavBar'
 import 'materialize-css/dist/css/materialize.min.css'
+import Header from './components/Header'
+import Main from './components/Main'
+import Footer from './components/Footer'
+
 
 function App() {
   return (
     <Fragment>
-      <header className="App-header">
-        <NavBar/>
-      </header>
+      <Header/>
+      <Main/>
+      <Footer/>    
     </Fragment>
+    
   );
 }
 
