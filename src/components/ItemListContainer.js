@@ -1,14 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import ItemCount from "./ItemCount";
 
 
 export default function ItemListContainer ({greeting}) {
-    const [quantity, setQuantity] = useState(1);
+    let onAddToCart = (quantity, stock)=>{
+        stock < 1 ? alert("no hay stock disponible de este producto!") : alert("se agrego "+quantity+" producto al carrito")
 
+    }
     return (
         <div>
             <h1>{greeting}</h1>
-            <ItemCount stock={5} quantityState={[quantity, setQuantity]} />
+            <ItemCount stock={5} initial={1} onAdd={onAddToCart}/>
         </div> 
     )
 }

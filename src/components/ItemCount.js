@@ -1,9 +1,9 @@
-import React  from "react";
+import React, {useState} from "react";
 
 
-export default function ItemCount({stock, quantityState}) {
+export default function ItemCount({stock,initial,onAdd}) {
 
-  const [quantity, setQuantity] = quantityState;
+  const [quantity, setQuantity] = useState(initial);
 
   const addProduct = () => {
     if (quantity < stock && quantity > 0) setQuantity(quantity + 1)
@@ -12,6 +12,8 @@ export default function ItemCount({stock, quantityState}) {
   const removeProduct = () => {
     if (quantity > 1) setQuantity(quantity - 1)
   };
+
+
 
   return (
     <div className="container">
@@ -43,7 +45,7 @@ export default function ItemCount({stock, quantityState}) {
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
             <li className="tab">
-              <a className="active" href="#">
+              <a className={stock < 1? "btn-flat disabled":"active"} href="#" onClick={() => onAdd(quantity, stock)}>
                 Agregar al carrito
               </a>
             </li>
