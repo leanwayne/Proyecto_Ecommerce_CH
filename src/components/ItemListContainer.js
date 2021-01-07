@@ -7,6 +7,7 @@ const itemsMock = [
       id: 1,
       title: "jean negro Urban",
       price: 800,
+      descripcion:'jean elastizado de la nueva coleccion Urban 2021',
       pictureUrl:
         "https://http2.mlstatic.com/D_NQ_NP_650191-MLA31114378252_062019-O.webp",
     },
@@ -14,6 +15,7 @@ const itemsMock = [
       id: 2,
       title: "Remera blanca Urban",
       price: 1200,
+      descripcion:'Remera al cuerpo de la nueva coleccion Urban 2021',
       pictureUrl:
         "https://http2.mlstatic.com/D_NQ_NP_890124-MLA40362509323_012020-O.webp",
     },
@@ -21,6 +23,7 @@ const itemsMock = [
       id: 3,
       title: "Chaqueta negra Urban",
       price: 2600,
+      descripcion:'Chaqueta de cuero de la nueva coleccion Urban 2021',
       pictureUrl:
         "https://http2.mlstatic.com/D_NQ_NP_809543-MLA41634735796_052020-O.webp",
     },

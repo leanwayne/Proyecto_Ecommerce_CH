@@ -1,22 +1,23 @@
 import React from "react";
 
-export default function Item({ item }) {
+export default function ItemDetail({ item }) {
   return (
     <>
       <div className="row">
         <div className="col s12 m7">
           <div className="card">
-          <div className="card-content N/A transparent">
+          <div className="card-content grey lighten-4">
           <p>{item.title}</p>
-          </div>
+        </div>
             <div className="card-image">
               <img src={item.pictureUrl} />
+              <span className="card-title black-text text-darken-2">{item.title}</span>
             </div>
-            <div className="card-content grey lighten-2">
+            <div className="card-content">
               <p>Precio:${item.price}</p>
             </div>
-            <div className="card-action grey darken-4">
-              <a href="#">detalles del producto</a>
+            <div className="card">
+              <a >{item.descripcion}</a>
             </div>
           </div>
         </div>
