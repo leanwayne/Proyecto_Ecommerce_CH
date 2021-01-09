@@ -1,6 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
+import ItemDetailContainer from "./ItemDetailContainer";
 
 export default function Item({ item }) {
+  const [showDetail, setShowDetail] = useState(false)
   return (
     <>
       <div className="row">
@@ -15,12 +17,13 @@ export default function Item({ item }) {
             <div className="card-content grey lighten-2">
               <p>Precio:${item.price}</p>
             </div>
-            <div className="card-action grey darken-4">
-              <a href="#">detalles del producto</a>
+            <div type="button" className="card-action grey darken-4" onClick={()=>{setShowDetail(!showDetail)} }>
+              <a  >detalles del producto</a>
             </div>
           </div>
         </div>
       </div>
+      {showDetail && <ItemDetailContainer/>}
     </>
   );
 }

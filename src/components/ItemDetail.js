@@ -3,6 +3,7 @@ import React from "react";
 export default function ItemDetail({ item }) {
   return (
     <>
+    {item && (
       <div className="row">
         <div className="col s12 m7">
           <div className="card">
@@ -22,6 +23,7 @@ export default function ItemDetail({ item }) {
           </div>
         </div>
       </div>
+    )}
     </>
   );
 }
