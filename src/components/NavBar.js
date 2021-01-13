@@ -1,22 +1,24 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import 'materialize-css/dist/css/materialize.min.css'
 import CartWidget from './CartWidget'
+import {NavLink} from 'react-router-dom' 
+
 
 function NavBar() {
   return (
-    <Fragment>
+    <>
         <nav>
             <div className="nav-wrapper grey darken-3">
-            <a href="#" className="brand-logo">Urban</a>
+            <NavLink to={"/"}><a className="brand-logo">Urban</a></NavLink>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-                <li><a href="https://www.google.com/">Remeras</a></li>
-                <li><a href="https://www.google.com/">Accesorios</a></li>
-                <li><a href="chttps://www.google.com/">Jeans</a></li>
+                <li><NavLink to="/category/remeras">Remeras</NavLink></li>
+                <li><NavLink to="/category/camperas">Camperas</NavLink></li>
+                <li><NavLink to="/category/jeans">Jeans</NavLink></li>
                 <CartWidget/>
             </ul>
             </div>
         </nav>
-    </Fragment>
+    </>
   );
 }
 

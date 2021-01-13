@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import { Router } from "react-router-dom";
 import ItemDetailContainer from "./ItemDetailContainer";
+import {Link} from 'react-router-dom';
 
-export default function Item({ item }) {
+export default function Item({item}) {
   const [showDetail, setShowDetail] = useState(false)
   return (
     <>
@@ -18,7 +20,7 @@ export default function Item({ item }) {
               <p>Precio:${item.price}</p>
             </div>
             <div type="button" className="card-action grey darken-4" onClick={()=>{setShowDetail(!showDetail)} }>
-              <a  >detalles del producto</a>
+              <a><Link to={'/item/' + item.id}>detalles del producto</Link></a>
             </div>
           </div>
         </div>

@@ -1,15 +1,23 @@
-import React, { Fragment } from "react";
-import ItemDetailContainer from "./ItemDetailContainer";
+import React from "react";
 import ItemListContainer from "./ItemListContainer";
+import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import ItemDetailContainer from "./ItemDetailContainer";
 
 export default function Main() {
 
   return (
-    <Fragment>
       <div className="container">
-        <ItemListContainer greeting="Bienvenido a la tienda Urban!"/>
-        
+          <Switch>
+            <Route exact path='/'>
+              <ItemListContainer greeting="Bienvenido a la tienda Urban!"/>
+            </Route>
+              <Route exact path='/category/:id'>
+                <ItemListContainer greeting="Bienvenido a la tienda Urban!"/>
+              </Route>
+            <Route exact path='/item/:id'>
+              <ItemDetailContainer/>
+            </Route>
+          </Switch>
       </div>
-    </Fragment>
   );
 }

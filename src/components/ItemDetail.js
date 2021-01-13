@@ -1,9 +1,14 @@
 import React from "react";
+import ItemCount from "./ItemCount";
 
-export default function ItemDetail({ item }) {
+export default function ItemDetail({ item, initial }) {
+  let onAddToCart = (quantity, stock) => {
+    stock < 1
+      ? alert("no hay stock disponible de este producto!")
+      : alert("se agrego " + quantity + " producto al carrito");
+  };
   return (
-    <>
-    {item && (
+    <>   
       <div className="row">
         <div className="col s12 m7">
           <div className="card">
@@ -23,7 +28,7 @@ export default function ItemDetail({ item }) {
           </div>
         </div>
       </div>
-    )}
+      <ItemCount stock={item.stock} initial={initial} onAdd={onAddToCart}/>
     </>
   );
 }
