@@ -1,43 +1,33 @@
-import React, {useState} from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-
-export default function ItemCount({stock,initial,onAdd}) {
-
-  const [quantity, setQuantity] = useState(initial);
-
-  const addProduct = () => {
-    if (quantity < stock && quantity > 0) setQuantity(quantity + 1)
-  };
-  
-  const removeProduct = () => {
-    if (quantity > 1) setQuantity(quantity - 1)
-  };
-
-
-
+export default function ItemCount({
+  onAdd,
+  add,
+  remove,
+  quantity,
+  open,
+  item,
+}) {
   return (
     <div className="container">
       <div className="card">
         <div className="card-content grey lighten-4">
-          <p>Black-Jacket Urban ({stock} en stock)</p>
+          <p>Black-Jacket Urban ({item.stock} en stock)</p>
         </div>
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
-            <li className="tab" onClick={addProduct}>
+            <li className="tab" onClick={add}>
               <a className="active" href="#">
-                <i class="small material-icons">
-                  add
-                </i>
+                <i class="small material-icons">add</i>
               </a>
             </li>
             <li className="tab">
-              <a>{quantity}</a> 
+              <a>{quantity}</a>
             </li>
-            <li className="tab" onClick={removeProduct}>
+            <li className="tab" onClick={remove}>
               <a className="active" href="#">
-                <i class="small material-icons" >
-                  remove
-                </i>
+                <i class="small material-icons">remove</i>
               </a>
             </li>
           </ul>
@@ -45,9 +35,14 @@ export default function ItemCount({stock,initial,onAdd}) {
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
             <li className="tab">
-              <a className={stock < 1? "btn-flat disabled":"active"} href="#" onClick={() => onAdd(quantity, stock)}>
-                Agregar al carrito
-              </a>
+              {!open ? (
+                <a className={item.stock < 1 ? "btn-flat disabled" : "active"}
+                  href="#"
+                  onClick={() => onAdd(item)}
+                > Agregar al carrito
+                </a>)
+                 : (<Link to="/cart"><a>Terminar mi compra</a></Link>)
+              }
             </li>
           </ul>
         </div>

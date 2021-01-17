@@ -10,6 +10,7 @@ const itemsMock = [
     pictureUrl:
       "https://http2.mlstatic.com/D_NQ_NP_650191-MLA31114378252_062019-O.webp",
     stock: 6,
+    initial: 1,
     categoryId: "jeans",
   },
   {
@@ -20,6 +21,7 @@ const itemsMock = [
     pictureUrl:
       "https://http2.mlstatic.com/D_NQ_NP_890124-MLA40362509323_012020-O.webp",
     stock: 12,
+    initial: 1,
     categoryId: "remeras",
   },
   {
@@ -30,18 +32,19 @@ const itemsMock = [
     pictureUrl:
       "https://http2.mlstatic.com/D_NQ_NP_809543-MLA41634735796_052020-O.webp",
     stock: 5,
+    initial: 2,
     categoryId: "camperas",
   },
 ];
 
 export default function ItemDetailContainer() {
   const [item, setItem] = useState();
-  const {id} = useParams();
+  const { id } = useParams();
 
   useEffect(() => {
     const getItem = new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve(itemsMock.find(item => item.id === id));
+        resolve(itemsMock.find((item) => item.id === id));
       }, 2000);
     });
     getItem
@@ -49,11 +52,10 @@ export default function ItemDetailContainer() {
       .catch((error) => console.log(error));
   }, [id]);
 
-  console.log(item)
 
   return (
     <div>
-      {item ? <ItemDetail item={item} initial={1}/> : <h2>Loading..</h2>}
+      {item ? <ItemDetail item={item} stock={item.stock}/> : <h2>Loading..</h2>}
     </div>
   );
 }
