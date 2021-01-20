@@ -2,6 +2,7 @@ import React from "react";
 import ItemListContainer from "./ItemListContainer";
 import { Route, Switch } from "react-router-dom";
 import ItemDetailContainer from "./ItemDetailContainer";
+import Cart from "./Cart"
 
 export default function Main() {
   return (
@@ -16,6 +17,9 @@ export default function Main() {
         <Route exact path="/item/:id">
           <ItemDetailContainer />
         </Route>
+        <Route exact path="/cart">
+          <Cart/>
+        </Route>    
       </Switch>
     </div>
   );

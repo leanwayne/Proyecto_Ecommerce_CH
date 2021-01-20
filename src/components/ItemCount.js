@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
+import { CartContext } from './CartContext';
 
-export default function ItemCount({
-  onAdd,
-  add,
-  remove,
-  quantity,
-  open,
-  item,
-}) {
+export default function ItemCount({add,remove,quantity,item,id}) {
+  
+  const [ open, setOpen ] = useState(false)
+
+  const { addToCart } = useContext(CartContext)
+  
+  function addAndOpen(item, quantity, id){
+    addToCart(item, quantity, id);
+    setOpen(true)
+    console.log(item)
+    console.log(quantity)
+    console.log(id)
+  }
+
   return (
     <div className="container">
       <div className="card">
@@ -19,7 +26,7 @@ export default function ItemCount({
           <ul className="tabs tabs-fixed-width">
             <li className="tab" onClick={add}>
               <a className="active" href="#">
-                <i class="small material-icons">add</i>
+                <i className="small material-icons">add</i>
               </a>
             </li>
             <li className="tab">
@@ -27,7 +34,7 @@ export default function ItemCount({
             </li>
             <li className="tab" onClick={remove}>
               <a className="active" href="#">
-                <i class="small material-icons">remove</i>
+                <i className="small material-icons">remove</i>
               </a>
             </li>
           </ul>
@@ -36,9 +43,9 @@ export default function ItemCount({
           <ul className="tabs tabs-fixed-width">
             <li className="tab">
               {!open ? (
-                <a className={item.stock < 1 ? "btn-flat disabled" : "active"}
+                <a className={item.stock < 0 ? "btn-flat disabled" : "active"}
                   href="#"
-                  onClick={() => onAdd(item)}
+                  onClick={() => addAndOpen(item, quantity, id)}
                 > Agregar al carrito
                 </a>)
                  : (<Link to="/cart"><a>Terminar mi compra</a></Link>)

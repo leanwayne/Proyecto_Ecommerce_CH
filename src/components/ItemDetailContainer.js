@@ -31,8 +31,8 @@ const itemsMock = [
     descripcion: "Chaqueta de cuero de la nueva coleccion Urban 2021",
     pictureUrl:
       "https://http2.mlstatic.com/D_NQ_NP_809543-MLA41634735796_052020-O.webp",
-    stock: 5,
-    initial: 2,
+    stock: 10,
+    initial: 1,
     categoryId: "camperas",
   },
 ];
