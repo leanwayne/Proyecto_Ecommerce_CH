@@ -9,6 +9,7 @@ function CartProvider( { children }) {
     const [ quantity, setQuantity ] = useState(0)
     const [ total, setTotal ] = useState()
 
+
     useEffect(() => {
         var t = 0
         const totals = cart.map( p => p.price * p.amount)
@@ -19,28 +20,23 @@ function CartProvider( { children }) {
     }, [cart])
 
     function isInCart(id){
-        const item = cart.find(p => p.id === id)
-        if (item === undefined){
-            return false
-        }
-        else {
-            return true
-        }
+        return !!cart.find(p => p.id === id)
     }
 
-    function addToCart(product, quantity, id) {
-         
+    function addToCart(item, quantity, id) {
+        
         if (isInCart(id)){
             const oldProduct = cart.find(p => p.id === id)
             const newQuantity = oldProduct.amount + quantity           
             const newProduct = { id: oldProduct.id, title: oldProduct.title, image: oldProduct.image, price: oldProduct.price, amount: newQuantity}
-            const cartWithoutOld = cart.filter(product => product.id =! id)
+            const cartWithoutOld = cart.filter(item => item.id !== id)
             const cartWithNew = [...cartWithoutOld, newProduct]
-            setCart(cartWithNew)            
+            setCart(cartWithNew)  
         } else {
-            const newItem = { id: product.id, title: product.title, image: product.pictureUrl, price: product.price, amount: quantity }
-            setCart([...cart, newItem]) 
+            const newItem = { id: item.id, title: item.title, image: item.pictureUrl, price: item.price, amount: quantity }
+            setCart([...cart, newItem])
         }
+        
     }
 
     function eliminateFromCart(id){

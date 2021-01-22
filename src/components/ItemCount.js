@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
+import Cart from './Cart';
 import { CartContext } from './CartContext';
 
 export default function ItemCount({add,remove,quantity,item,id}) {
@@ -11,9 +12,7 @@ export default function ItemCount({add,remove,quantity,item,id}) {
   function addAndOpen(item, quantity, id){
     addToCart(item, quantity, id);
     setOpen(true)
-    console.log(item)
-    console.log(quantity)
-    console.log(id)
+  
   }
 
   return (
