@@ -40,7 +40,7 @@ function CartProvider( { children }) {
     }
 
     function eliminateFromCart(id){
-        const newCart = cart.filter(product => product.id !== id)
+        const newCart = cart.filter(item => item.id !== id)
         setCart(newCart)
     }
 

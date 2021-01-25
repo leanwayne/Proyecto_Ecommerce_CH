@@ -45,7 +45,7 @@ export default function ItemDetailContainer() {
     const getItem = new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(itemsMock.find((item) => item.id === id));
-      }, 2000);
+      }, 1000);
     });
     getItem
       .then((response) => setItem(response))

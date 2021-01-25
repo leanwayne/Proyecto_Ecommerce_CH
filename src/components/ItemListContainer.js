@@ -49,7 +49,7 @@ export default function ItemListContainer({ greeting }) {
           reject("La lista de items está vacía");
         }
         resolve(itemsMock);
-      }, 2000);
+      }, 1000);
     });
     getItems
       .then((response) => setItems(response))
@@ -57,8 +57,9 @@ export default function ItemListContainer({ greeting }) {
   }, [itemsMock]);
 
   return (
-    <div>
-      <h1>{greeting}</h1>
+    <div className = 'row'>
+      <h1><img src="https://dslv9ilpbe7p1.cloudfront.net/bWzwSynMqg6NTkRQV1g7yg_store_banner_image.png" alt=""/></h1>
+      <h1 className='center-align'>{greeting}</h1>
       {!items.length ? (
         <h2>Loading...</h2>
       ) : (

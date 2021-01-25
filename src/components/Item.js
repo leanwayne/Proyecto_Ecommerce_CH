@@ -5,7 +5,7 @@ export default function Item({ item }) {
     <>
       <div className="row">
         <div className="col s12 m7">
-          <div className="card">
+          <div className="card hoverable">
             <div className="card-content N/A transparent">
               <p>{item.title}</p>
             </div>
