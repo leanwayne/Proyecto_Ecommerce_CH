@@ -8,7 +8,8 @@ function CartProvider( { children }) {
     const [ cart, setCart ] = useState([])
     const [ quantity, setQuantity ] = useState(0)
     const [ total, setTotal ] = useState()
-
+    console.log(cart)
+    console.log("quantity",quantity)
 
     useEffect(() => {
         var t = 0

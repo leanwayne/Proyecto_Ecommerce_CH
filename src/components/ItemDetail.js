@@ -7,7 +7,7 @@ import ItemCount from "./ItemCount";
 export default function ItemDetail({ item, stock }) {
 
 
-  const [quantity, setQuantity] = useState(item.initial);
+  const [quantity, setQuantity] = useState(1);
 
   const addProduct = () => {
     if (quantity < stock && quantity > 0) setQuantity(quantity + 1);
