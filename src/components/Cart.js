@@ -1,10 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem.js";
 
 function Cart() {
-  const { cart, clearCart, total } = useContext(CartContext);
+  const { cart, clearCart } = useContext(CartContext);
+  const [ total, setTotal ] = useState()
+
+  useEffect(() => {
+    var t = 0
+    const totals = cart.map( p => p.item.price * p.quantity)
+    totals.map( p => t = t + p)
+    setTotal(t)
+}, [cart])
 
   return (
     <div>
@@ -23,12 +31,12 @@ function Cart() {
         {cart.length > 0 &&
           cart.map((product) => (
             <CartItem
-              key={product.id}
-              id={product.id}
-              name={product.title}
-              image={product.image}
-              price={product.price}
-              amount={product.amount}
+              key={product.item.id}
+              id={product.item.id}
+              name={product.item.title}
+              image={product.item.image}
+              price={product.item.price}
+              amount={product.quantity}
             />
           ))}
       </div>
