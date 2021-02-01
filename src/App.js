@@ -8,20 +8,15 @@ import CartProvider from "./components/CartContext";
 import {firestore} from "./firebaseConfig"
 
 function App() {
-
   const [items, setItems] = useState([])
-
-
+  
   useEffect(() => {
     const db = firestore
     const collection = db.collection("items")
     const query = collection.get()
- 
     query
     .then((resultado)=>{
- 
-      const itemsArray = resultado.docs
-      
+      const itemsArray = resultado.docs 
       const productos = itemsArray.map(item=>{
         const productoFinal = {
           id : item.id,

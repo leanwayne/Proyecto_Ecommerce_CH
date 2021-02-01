@@ -22,7 +22,7 @@ function Cart() {
         <>
           <h1>Aún no hay productos en el carrito</h1>
           <Link to={"/"}>
-            <button onClick={clearCart}>Llevame al catalogo de compra</button>
+            <button>Llevame al catalogo de compra</button>
           </Link>
         </>
       )}
