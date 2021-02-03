@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
 import { Link } from "react-router-dom";
-import Cart from './Cart';
 import { CartContext } from './CartContext';
 
 export default function ItemCount({add,remove,quantity,item,id}) {
@@ -19,7 +18,7 @@ export default function ItemCount({add,remove,quantity,item,id}) {
     <div className="container">
       <div className="card">
         <div className="card-content grey lighten-4">
-          <p>Black-Jacket Urban ({item.stock} en stock)</p>
+          <p>{item.title} ({item.stock} en stock)</p>
         </div>
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
@@ -42,7 +41,7 @@ export default function ItemCount({add,remove,quantity,item,id}) {
           <ul className="tabs tabs-fixed-width">
             <li className="tab">
               {!open ? (
-                <a className={item.stock < 0 ? "btn-flat disabled" : "active"}
+                <a className={item.stock < 1 ? "btn-flat disabled" : "active"}
                   href="#"
                   onClick={() => addAndOpen(item, quantity, id)}
                 > Agregar al carrito

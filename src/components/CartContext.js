@@ -32,7 +32,6 @@ function CartProvider( { children }) {
     function clearCart(){
         setCart([])   
     }
-
     return (
          <CartContext.Provider value ={{ cart, addToCart, eliminateFromCart, clearCart }}>
             { children }

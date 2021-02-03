@@ -16,7 +16,7 @@ export default function Main({items}) {
           <ItemListContainer greeting="Bienvenido a la tienda Urban!" items={items}/>
         </Route>
         <Route exact path="/item/:id">
-          <ItemDetailContainer items={items} />
+          <ItemDetailContainer/>
         </Route>
         <Route exact path="/cart">
           <Cart/>

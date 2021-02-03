@@ -15,22 +15,13 @@ function App() {
     const collection = db.collection("items")
     const query = collection.get()
     query
-    .then((resultado)=>{
-      const itemsArray = resultado.docs 
-      const productos = itemsArray.map(item=>{
-        const productoFinal = {
-          id : item.id,
-          ...item.data()
-        }
-       return productoFinal;
-      })
-      setItems(productos)
+    .then(({docs})=>{
+      setItems(docs.map(doc=>({id:doc.id,...doc.data()})))
     })
     .catch(()=>{
       console.log("fallo")
     })  
    },[])
- 
   return (
     <CartProvider>
       <BrowserRouter>
@@ -41,5 +32,4 @@ function App() {
     </CartProvider>
   );
 }
-
 export default App;
