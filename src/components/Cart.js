@@ -37,7 +37,7 @@ const manejarCompra = (e) => {
        const collection = db.collection("items")
        const bache = firestore.batch()
        cart.forEach(item=>{
-           bache.update(collection.doc(item.item.id),{stock:0})
+           bache.update(collection.doc(item.item.id),{stock: item.item.stock -item.quantity})
        })
        bache
        .commit()
@@ -52,6 +52,8 @@ const manejarCompra = (e) => {
    .catch((err)=>{
        console.log(err)
    })
+
+    clearCart()
 }
   return (
     <div>
@@ -60,6 +62,7 @@ const manejarCompra = (e) => {
       ) : (
         <>
           <h1>Aún no hay productos en el carrito</h1>
+          {id? <p>Orden confirmada! Nro de orden {id}</p> : null}
           <Link to={"/"}>
             <button>Llevame al catalogo de compra</button>
           </Link>
@@ -92,22 +95,21 @@ const manejarCompra = (e) => {
             </button>
             {open ? (
             <>
-    {id? <p>Orden confirmada! Nro de orden {id}</p> : null}
-    <h2>Ya casi es tuyo!</h2>
-    <p>Completa los datos de compra</p>
-    <form onSubmit={manejarCompra}>
-        <div>
-            <input onChange={e=>setNombre(e.target.value)} type="text" placeholder="nombre" value={nombre} />
-        </div>
-        <div>
-            <input onChange={e=>setTelefono(e.target.value)} type="tel" placeholder="Telefono" value={telefono}/>
-        </div>
-        <div>
-            <input onChange={e=>setEmail(e.target.value)} type="email" placeholder="Email" value={email}/>
-        </div>
-        <button>Comprar</button>
-    </form>
-   </>): null}
+              <h2>Ya casi es tuyo!</h2>
+              <p>Completa los datos de compra</p>
+              <form onSubmit={manejarCompra}>
+                  <div>
+                      <input onChange={e=>setNombre(e.target.value)} type="text" placeholder="nombre" value={nombre} />
+                  </div>
+                  <div>
+                      <input onChange={e=>setTelefono(e.target.value)} type="tel" placeholder="Telefono" value={telefono}/>
+                  </div>
+                  <div>
+                      <input onChange={e=>setEmail(e.target.value)} type="email" placeholder="Email" value={email}/>
+                  </div>
+                  <button>Comprar</button>
+              </form>
+            </>): null}
           </div>
         </>
       )}

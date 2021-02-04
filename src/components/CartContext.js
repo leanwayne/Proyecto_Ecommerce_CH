@@ -5,7 +5,6 @@ export const CartContext = React.createContext();
 
 function CartProvider( { children }) {
     const [ cart, setCart ] = useState([])
-    console.log("cart", cart)
     function isInCart(id){
         return !!cart.find(p => p.item.id === id)
     };
@@ -14,12 +13,12 @@ function CartProvider( { children }) {
         if (isInCart(id)){
             const oldProduct = cart.find(p => p.item.id === id)
             const newQuantity = oldProduct.quantity + quantity
-            const newProduct = {item:{id: oldProduct.item.id, title: oldProduct.item.title, image: oldProduct.item.image, price: oldProduct.item.price}, quantity: newQuantity}
+            const newProduct = {item:{id: oldProduct.item.id, title: oldProduct.item.title, image: oldProduct.item.image, price: oldProduct.item.price, stock: item.stock}, quantity: newQuantity}
             const cartWithoutOld = cart.filter(p => p.item.id !== id)
             const cartWithNew = [...cartWithoutOld, newProduct]
             setCart(cartWithNew)
         } else {
-            const newItem = {item:{id: item.id, title: item.title, image: item.pictureUrl, price: item.price}, quantity: quantity}
+            const newItem = {item:{id: item.id, title: item.title, image: item.pictureUrl, price: item.price, stock: item.stock}, quantity: quantity}
             setCart([...cart, newItem])
         }   
     }

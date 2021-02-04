@@ -9,6 +9,7 @@ export default function ItemListContainer({ greeting, items }) {
     <div className = 'row'>
       <h1><img src="https://dslv9ilpbe7p1.cloudfront.net/bWzwSynMqg6NTkRQV1g7yg_store_banner_image.png" alt=""/></h1>
       <h1 className='center-align'>{greeting}</h1>
+      <div className = 'col s4'>
       {!items.length ? (
         <h2>Loading...</h2>
       ) : (
@@ -16,6 +17,7 @@ export default function ItemListContainer({ greeting, items }) {
           items={categoryId ? items.filter((item) => item.categoryId === categoryId) : items}
         />
       )}
+    </div>
     </div>
   );
 }

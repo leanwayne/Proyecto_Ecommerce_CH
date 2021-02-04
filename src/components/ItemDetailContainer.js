@@ -5,11 +5,7 @@ import { firestore } from "../firebaseConfig";
 
 export default function ItemDetailContainer() {
   const { id } = useParams();
-  const [items, setItems] = useState([]);
   const [item, setItem] = useState();
-  console.log("items", items);
-  console.log("item", item);
-  console.log("id", id);
 
   useEffect(() => {
     const db = firestore;
