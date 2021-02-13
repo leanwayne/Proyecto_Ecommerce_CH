@@ -3,7 +3,7 @@ import { CartContext } from "./CartContext";
 import { Link } from "react-router-dom";
 import CartItem from "./CartItem.js";
 import firebase from "firebase"
-import {firestore} from "../firebaseConfig"
+import {firestoreAuth} from "../firebaseConfig"
 
 function Cart() {
   const { cart, clearCart } = useContext(CartContext);
@@ -27,7 +27,7 @@ const manejarCompra = (e) => {
       date : firebase.firestore.Timestamp.fromDate(new Date()),
       total : total
   }
-   const db = firestore
+   const db = firestoreAuth.firestore
    const collection = db.collection("orders")
 
    collection
@@ -35,7 +35,7 @@ const manejarCompra = (e) => {
    .then((response)=>{
        setId(response.id)
        const collection = db.collection("items")
-       const bache = firestore.batch()
+       const bache = firestoreAuth.firestore.batch()
        cart.forEach(item=>{
            bache.update(collection.doc(item.item.id),{stock: item.item.stock -item.quantity})
        })
@@ -52,7 +52,6 @@ const manejarCompra = (e) => {
    .catch((err)=>{
        console.log(err)
    })
-
     clearCart()
 }
   return (

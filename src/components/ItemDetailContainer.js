@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { firestore } from "../firebaseConfig";
+import { firestoreAuth } from "../firebaseConfig";
 
 export default function ItemDetailContainer() {
   const { id } = useParams();
   const [item, setItem] = useState();
 
   useEffect(() => {
-    const db = firestore;
+    const db = firestoreAuth.firestore;
     const collection = db.collection("items");
     const query = collection.doc(id).get();
     query

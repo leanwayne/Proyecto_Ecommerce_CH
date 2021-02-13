@@ -1,10 +1,14 @@
 import React from "react";
 import ItemListContainer from "./ItemListContainer";
-import { Route, Switch } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import ItemDetailContainer from "./ItemDetailContainer";
 import Cart from "./Cart"
+import LoginPage from "./LoginPage"
+import Home from './Home'
+
 
 export default function Main({items}) {
+
 
   return (
     <div className="container">
@@ -20,7 +24,13 @@ export default function Main({items}) {
         </Route>
         <Route exact path="/cart">
           <Cart/>
-        </Route>    
+        </Route>
+        <Route exact path="/LoginPage">
+          <LoginPage/>
+        </Route>
+        <Route exact path="/home">
+          <Home/>
+        </Route>
       </Switch>
     </div>
   );
