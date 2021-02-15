@@ -1,53 +1,39 @@
-import React, { useState, useContext } from 'react'
-import { Link } from "react-router-dom";
+import React, { useContext } from 'react'
 import { CartContext } from './CartContext';
 
-export default function ItemCount({add,remove,quantity,item,id}) {
-  
-  const [ open, setOpen ] = useState(false)
-
+export default function ItemCount({add,remove,quantity,item,id,size,color,setQuantity}) { 
   const { addToCart } = useContext(CartContext)
-  
-  function addAndOpen(item, quantity, id){
-    addToCart(item, quantity, id);
-    setOpen(true)
-  
-  }
 
+  function addAndOpen(item, quantity, id, color, size){
+    addToCart(item, quantity, id, color, size);
+    setQuantity(1)
+  }
   return (
     <div className="container">
       <div className="card">
         <div className="card-content grey lighten-4">
-          <p>{item.title} ({item.stock} en stock)</p>
+          <p className="center-align">({item.stock} en stock)</p>
         </div>
         <div className="card-tabs">
           <ul className="tabs tabs-fixed-width">
-            <li className="tab" onClick={add}>
-              <a className="active" href="#">
-                <i className="small material-icons">add</i>
-              </a>
+            <button className="waves-effect grey darken-3 btn-large" onClick={add}>
+                <i className="small material-icons white-text text-darken-2">add</i>
+            </button>
+            <li className="tab grey lighten-2">
+              <a className={"black-text text-black"}>{quantity}</a>
             </li>
-            <li className="tab">
-              <a>{quantity}</a>
-            </li>
-            <li className="tab" onClick={remove}>
-              <a className="active" href="#">
-                <i className="small material-icons">remove</i>
-              </a>
-            </li>
+            <button className="waves-effect grey darken-3 btn-large" onClick={remove}>
+                <i className="small material-icons white-text text-darken-2">remove</i>
+            </button>
           </ul>
         </div>
-        <div className="card-tabs">
-          <ul className="tabs tabs-fixed-width">
+        <div className="card-tabs ">
+          <ul className="tabs tabs-fixed-width grey darken-3">
             <li className="tab">
-              {!open ? (
-                <a className={item.stock < 1 ? "btn-flat disabled" : "active"}
-                  href="#"
-                  onClick={() => addAndOpen(item, quantity, id)}
-                > Agregar al carrito
-                </a>)
-                 : (<Link to="/cart"><a>Terminar mi compra</a></Link>)
-              }
+              <button className={item.stock < 1 ? "waves-effect btn-flat disabled" : "active white-text text-darken-2 waves-effect btn-large grey darken-2"}
+                onClick={() => addAndOpen(item, quantity, id, size, color)}
+              > Agregar al carrito
+              </button>
             </li>
           </ul>
         </div>

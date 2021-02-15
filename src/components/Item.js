@@ -2,9 +2,8 @@ import { Link } from "react-router-dom";
 
 export default function Item({ item }) {
   return (
-    <>
-      <div className="row">
-        <div className="col s12 m7">
+
+        <div className="col s3 ">
           <div className="card hoverable">
             <div className="card-content N/A transparent">
               <p>{item.title}</p>
@@ -22,7 +21,6 @@ export default function Item({ item }) {
             </div>
           </div>
         </div>
-      </div>
-    </>
+
   );
 }

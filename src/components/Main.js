@@ -5,6 +5,7 @@ import ItemDetailContainer from "./ItemDetailContainer";
 import Cart from "./Cart"
 import LoginPage from "./LoginPage"
 import Home from './Home'
+import PurchasePage from './purchasePage'
 
 
 export default function Main({items}) {
@@ -30,6 +31,9 @@ export default function Main({items}) {
         </Route>
         <Route exact path="/home">
           <Home/>
+        </Route>
+        <Route exact path="/purchasePage">
+          <PurchasePage/>
         </Route>
       </Switch>
     </div>

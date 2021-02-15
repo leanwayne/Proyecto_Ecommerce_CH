@@ -21,7 +21,7 @@ export default function ItemDetailContainer() {
   }, [id]);
 
   return (
-    <div>
+    <div >
       {item ? (
         <ItemDetail item={item} stock={item.stock} />
       ) : (

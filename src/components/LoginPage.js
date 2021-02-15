@@ -29,7 +29,7 @@ function LoginPage() {
         app.auth()
         .signInWithEmailAndPassword(email,password)
         .then((userCredential) => {
-            console.log(userCredential.user)
+            console.log("handleLogin",userCredential.user)
             setUser(userCredential.user);
             history.push('/home')
         })
@@ -55,6 +55,7 @@ function LoginPage() {
         .createUserWithEmailAndPassword(email, password)
         .then((userCredential) =>{
             setUser(userCredential.user)
+            console.log("handleSignup", userCredential)
             history.push('/home')
         })
         .catch(err => {
@@ -75,6 +76,7 @@ function LoginPage() {
             if(user){
                 clearInputs() 
                 setUser(user)
+                console.log("authlistener", user)
             }else{
                 setUser("")
             }  
@@ -87,10 +89,9 @@ function LoginPage() {
 
   return (
     <div className="row">
-        <div className="card large ">     
-            
-                <h4 className="center-align">Bienvenido a Urban</h4>
-                    <div className="row">
+        <div className="card large ">              
+                <h3 className="center-align">Bienvenido a Urban</h3>
+                    <div className="row container">
                         <div className="input-field col s12">
                             <textarea 
                             id="emailtext" 
@@ -115,15 +116,17 @@ function LoginPage() {
                     </div> 
                     <div>
                         {hasAccount ? (
-                            <>
-                              <button onClick={handleLogin} >Ingresar</button>
-                              <p>no tenes una cuenta? <span onClick={()=> setHasAccount(!hasAccount)}>Registrate</span></p>   
-                            </>
+                            
+                            <div className="center">
+                                <button className=" center-align waves-effect grey darken-3 white-text text-darken-2 btn-small" onClick={handleSignup}>Registrate</button>
+                                <p className="center-align">tenes una cuenta? <span className="blue-text" onClick={()=> setHasAccount(!hasAccount)}>Ingresar</span></p>
+                            </div>
+                            
                         ) : (
-                            <>
-                            <button onClick={handleSignup}>Registrate</button>
-                            <p>tenes una cuenta? <span onClick={()=> setHasAccount(!hasAccount)}>Ingresar</span></p>
-                            </>
+                            <div className="center">
+                                <button className="waves-effect grey darken-3 white-text text-darken-2 btn-small" onClick={handleLogin} >Ingresar</button>
+                                <p className="center-align" >no tenes una cuenta? <p className="blue-text" onClick={()=> setHasAccount(!hasAccount)}>Registrate</p></p>   
+                            </div>
                         )}
                         
                     </div>                    
