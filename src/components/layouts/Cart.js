@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import { CartContext } from "./CartContext";
+import { CartContext } from "../contexts/CartContext";
 import { Link } from "react-router-dom";
-import CartItem from "./CartItem.js";
+import CartItem from "../CartItem.js";
 
 function Cart() {
   const { cart, clearCart } = useContext(CartContext);
@@ -60,9 +60,7 @@ function Cart() {
                 Limpiar el carrito
               </button>
               <Link to="/purchasePage">
-                <button
-                  className="waves-effect grey darken-3 white-text text-darken-2 btn-large"
-                >
+                <button className="waves-effect grey darken-3 white-text text-darken-2 btn-large">
                   finalizar la compra
                 </button>
               </Link>

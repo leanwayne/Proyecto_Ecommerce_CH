@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import "materialize-css/dist/css/materialize.min.css";
-import CartWidget from "./CartWidget";
+import CartWidget from "./buttons/CartWidget";
 import { NavLink } from "react-router-dom";
 import M from "materialize-css";
-import LogInBtn from "./LogInBtn";
+import LogInBtn from "./buttons/LogInBtn";
 function NavBar() {
   useEffect(() => {
     document.addEventListener("DOMContentLoaded", function () {

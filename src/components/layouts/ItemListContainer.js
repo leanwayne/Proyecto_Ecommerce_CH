@@ -1,5 +1,5 @@
 import React from "react";
-import ItemList from "./ItemList";
+import ItemList from "../ItemList";
 import { useParams } from "react-router-dom";
 
 export default function ItemListContainer({ greeting, items }) {
@@ -12,7 +12,22 @@ export default function ItemListContainer({ greeting, items }) {
       <h1 className="center-align">{greeting}</h1>
       <div className="row">
         {!items.length ? (
-          <h2>Loading...</h2>
+          <>
+            <h2>Loading...</h2>
+            <div className="preloader-wrapper big active">
+              <div className="spinner-layer spinner-blue-only">
+                <div Name="circle-clipper left">
+                  <div className="circle"></div>
+                </div>
+                <div Name="gap-patch">
+                  <div className="circle"></div>
+                </div>
+                <div className="circle-clipper right">
+                  <div className="circle"></div>
+                </div>
+              </div>
+            </div>
+          </>
         ) : (
           <ItemList
             items={

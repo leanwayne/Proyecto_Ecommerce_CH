@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
-import { CartContext } from "./CartContext";
+import { CartContext } from "../contexts/CartContext";
 import firebase from "firebase";
-import { firestoreAuth } from "../firebaseConfig";
-import { AuthContext } from "./AuthContext";
+import { firestoreAuth } from "../../firebaseConfig";
+import { AuthContext } from "../contexts/AuthContext";
 import { Link } from "react-router-dom";
 
 function PurchasePage() {
@@ -45,8 +45,7 @@ function PurchasePage() {
         });
         bache
           .commit()
-          .then((r) => {
-          })
+          .then((r) => {})
           .catch((err) => {});
       })
       .catch((err) => {});

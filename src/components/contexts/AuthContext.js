@@ -1,14 +1,15 @@
 import React, { useState} from 'react'
-import firebase from "firebase"
-import app from "../firebaseConfig"
+import app from "../../firebaseConfig"
 
 export const AuthContext = React.createContext();
 
 function AuthProvider( { children }) {
     const [user,setUser] = useState("")
+    const [buttonChange, setButtonChange] = useState(false)
 
     const handleLogout = () => {
         app.auth().signOut()
+        setButtonChange(false)
     }
 
     return (
@@ -16,6 +17,8 @@ function AuthProvider( { children }) {
         user,
         setUser,
         handleLogout,
+        buttonChange,
+        setButtonChange,
       }}>
         {children}
       </AuthContext.Provider>

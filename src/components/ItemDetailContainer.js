@@ -21,11 +21,27 @@ export default function ItemDetailContainer() {
   }, [id]);
 
   return (
-    <div >
+    <div>
       {item ? (
         <ItemDetail item={item} stock={item.stock} />
       ) : (
-        <h2>Loading..</h2>
+        <>
+          <h2>Loading...</h2>
+
+          <div className="preloader-wrapper big active">
+            <div className="spinner-layer spinner-blue-only">
+              <div Name="circle-clipper left">
+                <div className="circle"></div>
+              </div>
+              <div Name="gap-patch">
+                <div className="circle"></div>
+              </div>
+              <div className="circle-clipper right">
+                <div className="circle"></div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );

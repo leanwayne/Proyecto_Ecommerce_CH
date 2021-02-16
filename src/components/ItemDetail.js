@@ -21,7 +21,7 @@ export default function ItemDetail({ item, stock }) {
         <h2 className="header">{item.title}</h2>
         <div className="card horizontal">
           <div className="card-image">
-            <img src={item.pictureUrl} />
+            <img src={item.pictureUrl} alt="" />
           </div>
           <div className="card-stacked">
             <div className="card-content">
@@ -31,15 +31,60 @@ export default function ItemDetail({ item, stock }) {
                 Precio: <p>${item.price}</p>
               </h5>
               <h6 className="header">
-                Talle: <button onClick={()=>setSize("x")} className={"btn-floating btn-small waves-effect waves-light grey"}><i >x</i></button>
-                 <button onClick={()=>setSize("l")} className={"btn-floating btn-small waves-effect waves-light grey"}><i >l</i></button>
-                 <button onClick={()=>setSize("m")} className={"btn-floating btn-small waves-effect waves-light grey"}><i >m</i></button>
-                 <button onClick={()=>setSize("s")} className={"btn-floating btn-small waves-effect waves-light grey"}><i >s</i></button>
+                Talle:{" "}
+                <button
+                  onClick={() => setSize("x")}
+                  className={
+                    "btn-floating btn-small waves-effect waves-light grey"
+                  }
+                >
+                  <i>x</i>
+                </button>
+                <button
+                  onClick={() => setSize("l")}
+                  className={
+                    "btn-floating btn-small waves-effect waves-light grey"
+                  }
+                >
+                  <i>l</i>
+                </button>
+                <button
+                  onClick={() => setSize("m")}
+                  className={
+                    "btn-floating btn-small waves-effect waves-light grey"
+                  }
+                >
+                  <i>m</i>
+                </button>
+                <button
+                  onClick={() => setSize("s")}
+                  className={
+                    "btn-floating btn-small waves-effect waves-light grey"
+                  }
+                >
+                  <i>s</i>
+                </button>
               </h6>
               <h6 className="header">
-                Color: <button onClick={()=>setColor("marron")} className={"btn-floating btn-small waves-effect brown darken-3"}/>
-                 <button onClick={()=>setColor("blanco")} className={"btn-floating btn-small waves-effect grey lighten-5"}/>
-                 <button onClick={()=>setColor("negro")} className={"btn-floating btn-small waves-effect grey darken-4"}/>
+                Color:{" "}
+                <button
+                  onClick={() => setColor("marron")}
+                  className={
+                    "btn-floating btn-small waves-effect brown darken-3"
+                  }
+                />
+                <button
+                  onClick={() => setColor("blanco")}
+                  className={
+                    "btn-floating btn-small waves-effect grey lighten-5"
+                  }
+                />
+                <button
+                  onClick={() => setColor("negro")}
+                  className={
+                    "btn-floating btn-small waves-effect grey darken-4"
+                  }
+                />
               </h6>
               <ItemCount
                 add={addProduct}
@@ -51,8 +96,14 @@ export default function ItemDetail({ item, stock }) {
                 color={color}
                 setQuantity={setQuantity}
               />
-              <Link to="/cart"><button className={"blue-text text-darken-2 waves-effect btn-flat "} >Terminar mi compra</button></Link>
-            </div>  
+              <Link to="/cart">
+                <button
+                  className={"blue-text text-darken-2 waves-effect btn-flat "}
+                >
+                  Terminar mi compra
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
