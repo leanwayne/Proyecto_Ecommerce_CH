@@ -13,7 +13,7 @@ function NavBar() {
   }, []);
 
   return (
-    <>
+    <div className="navbar-fixed">
       <nav>
         <div className="nav-wrapper grey darken-3">
           <NavLink to={"/"}>
@@ -49,7 +49,7 @@ function NavBar() {
           <NavLink to="/category/jeans">Jeans</NavLink>
         </li>
       </ul>
-    </>
+    </div>
   );
 }
 

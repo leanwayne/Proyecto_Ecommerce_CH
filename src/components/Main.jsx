@@ -33,7 +33,7 @@ export default function Main({ items }) {
           <LoginPage />
         </Route>
         <Route exact path="/home">
-          <Home />
+          <Home/>
         </Route>
         <Route exact path="/purchasePage">
           <PurchasePage />

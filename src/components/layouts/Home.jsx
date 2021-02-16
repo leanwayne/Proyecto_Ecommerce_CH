@@ -1,21 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { firestoreAuth } from "../../firebaseConfig";
 import { Link } from "react-router-dom";
 
 export default function Home() {
   const { user, handleLogout } = useContext(AuthContext);
-  const [orders, setOrders] = useState(null);
-
-  useEffect(() => {
-    const db = firestoreAuth.firestore;
-    const collection = db.collection("orders");
-    const query = collection.get();
-    query.then(({ docs }) => {
-      setOrders(docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-    });
-  }, []);
-  console.log("orders", orders);
 
   return (
     <>
@@ -24,12 +12,14 @@ export default function Home() {
           <h3 className="center-align">Bienvenido a Urban! </h3>
           <h4 className="center-align">{user.email}</h4>
           <div className="col s10 m5">
-            <div className="card-image ">
-              <img
-                className="col offset-s9"
-                src="https://static.fabapp.com/2288609/08b56560ba5f373346196f90e8498d17970edb9c"
-              />
-            </div>
+            <Link to="/">
+              <div className="card-image ">
+                <img
+                  className="col offset-s9"
+                  src="https://static.fabapp.com/2288609/08b56560ba5f373346196f90e8498d17970edb9c"
+                />
+              </div>
+            </Link>
             <div class="card-content">
               <p>
                 Bienvenido a Urban! tienda Ecommerce diseñada para el proyecto
@@ -44,7 +34,7 @@ export default function Home() {
                 >
                   cerrar sesion
                 </button>
-              </Link> 
+              </Link>
             </div>
           </div>
         </div>
