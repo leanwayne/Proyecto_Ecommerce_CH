@@ -4,15 +4,13 @@ export const CartContext = React.createContext();
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
-  function isInCart(id, size, color) {
-    return !!cart.find(
-      (p) => p.item.id === id && p.color === color && p.size === size
-    );
+  function isInCart(id) {
+    return !!cart.find((p) => p.item.id === id);
   }
 
-  function addToCart(item, quantity, id, size, color) {
-    if (isInCart(id, size, color)) {
-      const oldProduct = cart.find((p) => p.item.id === id && p.color === color && p.size === size );
+  function addToCart(item, quantity, id) {
+    if (isInCart(id)) {
+      const oldProduct = cart.find((p) => p.item.id === id);
       const newQuantity = oldProduct.quantity + quantity;
       const newProduct = {
         item: {
@@ -23,10 +21,8 @@ function CartProvider({ children }) {
           stock: item.stock,
         },
         quantity: newQuantity,
-        color: color,
-        size: size,
       };
-      const cartWithoutOld = cart.filter((p) => p.item.id !== id && p.color === color && p.size === size);
+      const cartWithoutOld = cart.filter((p) => p.item.id !== id);
       const cartWithNew = [...cartWithoutOld, newProduct];
       setCart(cartWithNew);
       console.log("newproduct", newProduct);
@@ -40,8 +36,6 @@ function CartProvider({ children }) {
           stock: item.stock,
         },
         quantity: quantity,
-        color: color,
-        size: size,
       };
       setCart([...cart, newItem]);
     }
