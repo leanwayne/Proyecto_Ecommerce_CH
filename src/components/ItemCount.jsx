@@ -7,8 +7,8 @@ export default function ItemCount({
   quantity,
   item,
   id,
-  size,
   color,
+  size,
   setQuantity,
 }) {
   const { addToCart } = useContext(CartContext);
@@ -55,9 +55,8 @@ export default function ItemCount({
                     ? "waves-effect btn-flat disabled"
                     : "active white-text text-darken-2 waves-effect btn-large grey darken-2"
                 }
-                onClick={() => addAndOpen(item, quantity, id, size, color)}
+                onClick={() => addAndOpen(item, quantity, id, color, size)}
               >
-                {" "}
                 Agregar al carrito
               </button>
             </li>

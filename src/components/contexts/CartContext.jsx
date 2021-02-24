@@ -4,13 +4,15 @@ export const CartContext = React.createContext();
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
-  function isInCart(id) {
-    return !!cart.find((p) => p.item.id === id);
+  function isInCart(id, color, size) {
+    return !!cart.find(
+      (p) => p.item.id === id && p.color === color && p.size === size
+    );
   }
 
-  function addToCart(item, quantity, id) {
-    if (isInCart(id)) {
-      const oldProduct = cart.find((p) => p.item.id === id);
+  function addToCart(item, quantity, id, color, size) {
+    if (isInCart(id, color, size)) {
+      const oldProduct = cart.find((p) => p.item.id === id && p.color === color && p.size === size );
       const newQuantity = oldProduct.quantity + quantity;
       const newProduct = {
         item: {
@@ -18,14 +20,16 @@ function CartProvider({ children }) {
           title: oldProduct.item.title,
           image: oldProduct.item.image,
           price: oldProduct.item.price,
-          stock: item.stock,
+          stock: oldProduct.item.stock,
         },
         quantity: newQuantity,
+        color: oldProduct.color,
+        size: oldProduct.size,
       };
-      const cartWithoutOld = cart.filter((p) => p.item.id !== id);
+      const cartWithoutOld = cart.filter((p) => p.item.id !== id && p.color !== color && p.size !== size);
       const cartWithNew = [...cartWithoutOld, newProduct];
       setCart(cartWithNew);
-      console.log("newproduct", newProduct);
+      console.log("cartWithoutOld", cartWithoutOld);
     } else {
       const newItem = {
         item: {
@@ -36,13 +40,15 @@ function CartProvider({ children }) {
           stock: item.stock,
         },
         quantity: quantity,
+        color: color,
+        size: size,
       };
       setCart([...cart, newItem]);
     }
   }
 
-  function eliminateFromCart(id) {
-    const newCart = cart.filter((p) => p.item.id !== id);
+  function eliminateFromCart(id, color, size) {
+    const newCart = cart.filter((p) => p.item.id !== id && p.color !== color && p.size !== size);
     setCart(newCart);
   }
 
