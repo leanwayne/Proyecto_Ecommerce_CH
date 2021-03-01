@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "./contexts/CartContext";
 
-function CartItem({ id, name, image, price, amount, color, size }) {
+function CartItem({ id, name, image, price, amount, size, color }) {
   const { eliminateFromCart } = useContext(CartContext);
   return (
     <>
@@ -24,7 +24,7 @@ function CartItem({ id, name, image, price, amount, color, size }) {
           </div>
           <button
             className="waves-effect grey darken-3 white-text text-darken-2 btn-small"
-            onClick={() => eliminateFromCart(id, color, size)}
+            onClick={() => eliminateFromCart(id)}
           >
             Quitar del carrito
           </button>
